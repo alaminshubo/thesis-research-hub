@@ -1,153 +1,590 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thesis Research & AI Workspace Hub</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Thesis Research & AI Workspace Hub | Pro</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar and subtle glowing card effect */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(45, 212, 191, 0.35);
+    }
+  </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+<body class="bg-[#0b0f19] text-slate-100 min-h-screen font-sans selection:bg-teal-500 selection:text-black">
 
-  <!-- Header -->
-  <header class="border-b border-slate-800 bg-slate-950/60 sticky top-0 backdrop-blur z-10 py-6 px-6">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div>
-        <h1 class="text-2xl font-bold text-sky-400">Research & Thesis Hub</h1>
-        <p class="text-sm text-slate-400">রিসার্চ পেপার রিডিং, এআই সামারি ও কোলাবোরেশন ড্যাশবোর্ড</p>
+  <header class="border-b border-slate-800/80 bg-[#0f172a]/80 sticky top-0 backdrop-blur-md z-40 px-4 sm:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-teal-500 to-sky-600 flex items-center justify-center shadow-lg shadow-teal-500/20 font-bold text-lg text-white">
+          Ψ
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl font-bold tracking-tight text-white">Thesis & AI Workspace</h1>
+            <span class="text-[10px] bg-teal-500/20 text-teal-300 font-semibold px-2 py-0.5 rounded-full border border-teal-500/30 uppercase tracking-wider">Team Edition</span>
+          </div>
+          <p class="text-xs text-slate-400">Collaborative paper discovery, smart summaries & thesis management</p>
+        </div>
       </div>
-      <div class="flex gap-3 text-sm">
-        <a href="#ai-tools" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 transition">AI Tools</a>
-        <a href="#paper-search" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 transition">Paper Finding</a>
-        <a href="#shared-docs" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 transition">Workspace</a>
-      </div>
+
+      <!-- Quick Nav Anchors -->
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs font-medium text-slate-300 flex-wrap justify-center">
+        <a href="#tracker" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 hover:text-white transition">📚 Paper Tracker</a>
+        <a href="#ai-tools" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 hover:text-white transition">🤖 AI Summary</a>
+        <a href="#discovery" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 hover:text-white transition">🔍 Discovery</a>
+        <a href="#prompts" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 hover:text-white transition">💡 Prompts</a>
+        <a href="#team-vault" class="px-3 py-1.5 rounded-lg bg-teal-600/30 text-teal-300 border border-teal-500/30 hover:bg-teal-600/40 transition">📁 Team Drive</a>
+      </nav>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto p-6 space-y-12">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
 
-    <!-- Section 1: Paper Reading & AI Summary Tools -->
-    <section id="ai-tools">
-      <h2 class="text-xl font-semibold mb-4 text-emerald-400 flex items-center gap-2">
-        <span>⚡</span> পেপার সামারি ও AI রিডিং টুলস
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <!-- Tool 1: ChatPDF / SciSpace -->
-        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">Must Use</span>
-            <h3 class="text-lg font-bold mt-2">SciSpace (Typeset.io)</h3>
-            <p class="text-sm text-slate-300 mt-1">
-              যেকোনো PDF আপলোড করে সরাসরি পেপারকে প্রশ্ন করা, জটিল সমীকরণ বোঝা এবং কনক্লুশন এক ক্লিকে সামারি করার সেরা টুল।
-            </p>
-          </div>
-          <a href="https://typeset.io" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-sky-600 hover:bg-sky-500 font-medium text-sm transition">
-            Open SciSpace &rarr;
-          </a>
+    <!-- Milestone Progress Card -->
+    <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800/90 to-slate-900 border border-slate-800 shadow-xl relative overflow-hidden">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-teal-400 font-semibold">Thesis Sprint</span>
+          <h2 class="text-lg font-bold text-white mt-0.5">গবেষণা ও থিসিস অগ্রগতি ট্র্যাকার</h2>
         </div>
-
-        <!-- Tool 2: Consensus -->
-        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">Fact-Checking</span>
-            <h3 class="text-lg font-bold mt-2">Consensus</h3>
-            <p class="text-sm text-slate-300 mt-1">
-              যেকোনো রিসার্চ প্রশ্ন সার্চ করলে শত শত পাবলিশড পেপার অ্যানালাইসিস করে সাইটেশনসহ সরাসরি এআই সামারি দেয়।
-            </p>
-          </div>
-          <a href="https://consensus.app" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-sky-600 hover:bg-sky-500 font-medium text-sm transition">
-            Open Consensus &rarr;
-          </a>
+        <div class="flex items-center gap-3">
+          <label for="progressRange" class="text-xs text-slate-400">আপডেট অগ্রগতি:</label>
+          <input id="progressRange" type="range" min="0" max="100" value="40" class="accent-teal-400 cursor-pointer h-2 bg-slate-700 rounded-lg" oninput="updateProgress(this.value)">
+          <span id="progressPercent" class="font-mono text-sm font-bold text-teal-300">40%</span>
         </div>
+      </div>
+      <!-- Visual Progress Bar -->
+      <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden border border-slate-700/60 p-0.5">
+        <div id="progressBarFill" class="bg-gradient-to-r from-teal-500 to-sky-500 h-full rounded-full transition-all duration-300" style="width: 40%"></div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 text-[11px] text-slate-400 text-center font-medium">
+        <div class="p-2 rounded bg-slate-800/50 border border-slate-800">1. Literature Review</div>
+        <div class="p-2 rounded bg-slate-800/50 border border-slate-800 text-teal-300">2. Methodology & Code (Now)</div>
+        <div class="p-2 rounded bg-slate-800/50 border border-slate-800">3. Result & Benchmarking</div>
+        <div class="p-2 rounded bg-slate-800/50 border border-slate-800">4. Final Overleaf Draft</div>
+      </div>
+    </div>
 
-        <!-- Tool 3: ChatPDF -->
-        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800">Quick Read</span>
-            <h3 class="text-lg font-bold mt-2">ChatPDF</h3>
-            <p class="text-sm text-slate-300 mt-1">
-              দ্রুত ছোট পেপারের PDF আপলোড করে পেজ রেফারেন্সসহ পয়েন্ট আকারে সারাংশ নেওয়ার জন্য সহজ টুল।
-            </p>
-          </div>
-          <a href="https://www.chatpdf.com" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-sky-600 hover:bg-sky-500 font-medium text-sm transition">
-            Open ChatPDF &rarr;
-          </a>
+    <section id="tracker" class="space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+        <div>
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="p-1 rounded-lg bg-teal-500/10 text-teal-400 border border-teal-500/20">📋</span>
+            টিম পেপার রিডিং ট্র্যাকার (Shared Papers List)
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">তোমরা বন্ধুরা যেসব পেপার পড়ছ বা থিসিসে রেফারেন্স হিসেবে নিচ্ছ তা এখানে সেভ রাখো।</p>
         </div>
+        <button onclick="togglePaperModal()" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs flex items-center justify-center gap-2 shadow-lg shadow-teal-700/20 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          নতুন পেপার যুক্ত করুন
+        </button>
+      </div>
 
+      <!-- Filter Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+        <button onclick="filterPapers('all')" class="filter-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 active-filter" data-status="all">সব পেপার (<span id="count-all">0</span>)</button>
+        <button onclick="filterPapers('Reading')" class="filter-tab px-3 py-1.5 rounded-lg bg-slate-800/70 text-yellow-300 hover:bg-slate-700" data-status="Reading">পড়া চলছে (<span id="count-reading">0</span>)</button>
+        <button onclick="filterPapers('Summarized')" class="filter-tab px-3 py-1.5 rounded-lg bg-slate-800/70 text-emerald-300 hover:bg-slate-700" data-status="Summarized">সামারি শেষ (<span id="count-summarized">0</span>)</button>
+        <button onclick="filterPapers('Cited')" class="filter-tab px-3 py-1.5 rounded-lg bg-slate-800/70 text-sky-300 hover:bg-slate-700" data-status="Cited">থিসিসে যুক্ত/Cited (<span id="count-cited">0</span>)</button>
+      </div>
+
+      <!-- Paper Cards Container -->
+      <div id="paperListContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Dynamic Cards rendered via JS -->
       </div>
     </section>
 
-    <!-- Section 2: Paper Discovery & Related Work -->
-    <section id="paper-search">
-      <h2 class="text-xl font-semibold mb-4 text-sky-400 flex items-center gap-2">
-        <span>🔍</span> পেপার খোঁজা ও রিলেটেড পেপার গ্রাফ
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-bold">Connected Papers</h3>
-            <p class="text-sm text-slate-300 mt-1">
-              একটি পেপারের নাম দিলে তার সাথে জড়িত অতীতের ও বর্তমানের সব পেপারের একটি ভিজ্যুয়াল গ্রাফ বানিয়ে দেয়।
-            </p>
-          </div>
-          <a href="https://www.connectedpapers.com" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-slate-700 hover:bg-slate-600 font-medium text-sm transition">
-            Explore Graph &rarr;
-          </a>
+    <section class="space-y-6">
+      <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
+        <div>
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="p-1 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20">⚡</span>
+            রিসার্চ ও এআই টুলস ডিরেক্টরি
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">পেপার সামারি, লিটারেচার রিভিউ এবং সাইটেশনের প্রয়োজনীয় সব প্ল্যাটফর্ম</p>
         </div>
-
-        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-bold">Google Scholar</h3>
-            <p class="text-sm text-slate-300 mt-1">
-              সবচেয়ে নির্ভরযোগ্য রিসার্চ সার্চ ইঞ্জিন। সাইটেশন গোনা এবং BibTeX এক্সপোর্ট করার জন্য জরুরি।
-            </p>
-          </div>
-          <a href="https://scholar.google.com" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-slate-700 hover:bg-slate-600 font-medium text-sm transition">
-            Search Scholar &rarr;
-          </a>
+        <!-- Search Input -->
+        <div class="relative w-full md:w-80">
+          <input type="text" id="toolSearchInput" onkeyup="searchTools()" placeholder="টুল বা কাজের নাম খুঁজুন (যেমন: summary, graph)..." class="w-full bg-slate-950 border border-slate-700 text-xs rounded-xl px-3.5 py-2.5 pl-9 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-teal-400">
+          <svg class="w-4 h-4 text-slate-500 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </div>
-
-        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-bold">Semantic Scholar</h3>
-            <p class="text-sm text-slate-300 mt-1">
-              AI-পাওয়ার্ড একাডেমিক সার্চ ইঞ্জিন। পেপারের "TL;DR" বা এক লাইনের সামারি পড়ার সুবিধা আছে।
-            </p>
-          </div>
-          <a href="https://www.semanticscholar.org" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-slate-700 hover:bg-slate-600 font-medium text-sm transition">
-            Open Semantic Scholar &rarr;
-          </a>
-        </div>
-
       </div>
-    </section>
 
-    <!-- Section 3: Team Collaboration & Paper Writing -->
-    <section id="shared-docs">
-      <h2 class="text-xl font-semibold mb-4 text-amber-400 flex items-center gap-2">
-        <span>🤝</span> গ্রুপ প্রজেক্ট ওয়ার্কস্পেস (বন্ধুদের লিংক)
-      </h2>
-      <div class="p-6 rounded-xl bg-slate-800 border border-slate-700 space-y-4">
-        <p class="text-sm text-slate-300">
-          এখানে তোমাদের থিসিস গ্রুপের গুগল ড্রাইভ, নোশন নোটবুক অথবা Overleaf (LaTeX) লিংকগুলো যুক্ত করে রাখো:
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <!-- Category 1: AI Paper Summary & Chat -->
+      <div id="ai-tools" class="tool-section space-y-4">
+        <h3 class="text-sm font-semibold text-emerald-400 tracking-wide uppercase flex items-center gap-2">
+          <span>🧠</span> পেপার সরাসরি পড়া ও এআই সামারি টুলস
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 tool-cards-grid">
+          
+          <!-- SciSpace -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="scispace summary pdf math explanation chat">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase">Best Overall</span>
+                <span class="text-xs text-slate-400 font-mono">Free / Pro</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">SciSpace (Typeset)</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                যেকোনো PDF আপলোড করে পেপারের ভেতর সরাসরি হাইলাইট করে প্রশ্ন করা যায়। জটিল ম্যাথ ইকুয়েশন ও গ্রাফ সহজ বাংলায় ব্যাখ্যা করতে পারে।
+              </p>
+              <div class="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-400 font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800">#PDFChat</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800">#MathExplain</span>
+              </div>
+            </div>
+            <a href="https://typeset.io" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-500 font-semibold text-xs text-white transition flex items-center justify-center gap-1">
+              SciSpace ওপেন করুন &rarr;
+            </a>
+          </div>
+
+          <!-- Consensus -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="consensus research search claims verify evidence">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/30 uppercase">Evidence AI</span>
+                <span class="text-xs text-slate-400 font-mono">200M+ Papers</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Consensus</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                কোনো রিসার্চ হাইপোথিসিস বা দাবি সত্যি কিনা জানতে এটি সেরা। সারা বিশ্বের পেপার রিড করে "Yes / No / Inconclusive" মিটার ও সাইটেশন দেয়।
+              </p>
+              <div class="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-400 font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800">#FactCheck</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800">#Literature</span>
+              </div>
+            </div>
+            <a href="https://consensus.app" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition flex items-center justify-center gap-1">
+              Consensus ওপেন করুন &rarr;
+            </a>
+          </div>
+
+          <!-- ChatPDF -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="chatpdf quick instant pdf questions">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 uppercase">Quick Reader</span>
+                <span class="text-xs text-slate-400 font-mono">Instant</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">ChatPDF</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                কোনো অ্যাকাউন্ট ছাড়াই দ্রুত যেকোনো পেপারের PDF টেনে ছেড়ে দিয়ে সাথে সাথে ৩টি প্রধান বুলেট পয়েন্ট সামারি পাওয়ার জন্য উপযোগী।
+              </p>
+              <div class="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-400 font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800">#FastReading</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800">#EasyExport</span>
+              </div>
+            </div>
+            <a href="https://www.chatpdf.com" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition flex items-center justify-center gap-1">
+              ChatPDF ওপেন করুন &rarr;
+            </a>
+          </div>
+
+          <!-- Elicit -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="elicit systematic review extraction dataset table">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">Automated Review</span>
+                <span class="text-xs text-slate-400 font-mono">Data Extraction</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Elicit.com</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                ১০-১২ টি পেপার একসাথে দিয়ে তাদের মেথডোলজি, ব্যবহৃত ডেটাসেট এবং রেজাল্ট সুন্দর একটি টেবিল আকারে স্বয়ংক্রিয়ভাবে সাজিয়ে দেয়।
+              </p>
+              <div class="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-400 font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800">#LiteratureTable</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800">#Comparison</span>
+              </div>
+            </div>
+            <a href="https://elicit.com" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition flex items-center justify-center gap-1">
+              Elicit ওপেন করুন &rarr;
+            </a>
+          </div>
+
+          <!-- Humata AI -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="humata large paper reports compare">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">Long Documents</span>
+                <span class="text-xs text-slate-400 font-mono">Thesis / Reports</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Humata AI</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                বড় ১০০+ পাতার থিসিস বা সার্ভে পেপার দ্রুত এনালাইসিস করার জন্য কার্যকর। উত্তর দেওয়ার সাথে রেফারেন্স পৃষ্ঠা নাম্বার উল্লেখ করে।
+              </p>
+              <div class="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-400 font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800">#SurveyReader</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800">#PageCitation</span>
+              </div>
+            </div>
+            <a href="https://www.humata.ai" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition flex items-center justify-center gap-1">
+              Humata AI ওপেন করুন &rarr;
+            </a>
+          </div>
+
+          <!-- Claude / ChatGPT (Research Prompts) -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1 border-teal-500/20" data-tags="chatgpt claude synthesis writing methodology">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-teal-500/20 text-teal-300 border border-teal-500/30 uppercase">Synthesis LLM</span>
+                <span class="text-xs text-slate-400 font-mono">Reasoning</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Claude / ChatGPT (Academic Mode)</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                পেপার লেখার ক্ষেত্রে ব্যাকগ্রাউন্ড স্টাডি ড্রাফট করা, প্যারাফ্রেজ করা এবং কোনো অ্যালগরিদমের অপটিমাইজেশন আইডিয়া ব্রেনস্টর্ম করার জন্য।
+              </p>
+              <div class="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-400 font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800">#Drafting</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800">#Brainstorming</span>
+              </div>
+            </div>
+            <a href="#prompts" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-teal-900/40 text-teal-300 border border-teal-500/30 hover:bg-teal-800/40 font-semibold text-xs transition flex items-center justify-center gap-1">
+              রেডিমেড প্রম্পটগুলো দেখুন &darr;
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="discovery" class="tool-section space-y-4 pt-4">
+        <h3 class="text-sm font-semibold text-sky-400 tracking-wide uppercase flex items-center gap-2">
+          <span>🕸️</span> পেপারের নেটওয়ার্ক ও রিলেটেড পেপার খোঁজা (Graph Discovery)
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 tool-cards-grid">
+          
+          <!-- Connected Papers -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="connected papers visual graph network seminal">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/30 uppercase">Visual Network</span>
+                <span class="text-xs text-slate-400 font-mono">Graph View</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Connected Papers</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                একটি পেপার দিলে তার উপর ভিত্তি করে অতীতে কোন মূল কাজগুলো হয়েছে (Prior Works) এবং পরে কারা এটিকে রেফারেন্স করেছে তার ইন্টারেক্টিভ নোড গ্রাফ তৈরি করে।
+              </p>
+            </div>
+            <a href="https://www.connectedpapers.com" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Connected Papers খুলুন &rarr;
+            </a>
+          </div>
+
+          <!-- Research Rabbit -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="research rabbit spotify collection citations sync">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase">Spotify of Research</span>
+                <span class="text-xs text-slate-400 font-mono">100% Free</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Research Rabbit</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                তোমার পছন্দের কিছু পেপার ফোল্ডারে যোগ করলে প্রতিদিন একই বিষয়ের নতুন এবং জনপ্রিয় পেপার রেকমেন্ড করে ইমেইলে পাঠিয়ে দেয়।
+              </p>
+            </div>
+            <a href="https://www.researchrabbit.ai" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Research Rabbit খুলুন &rarr;
+            </a>
+          </div>
+
+          <!-- Litmaps -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="litmaps timeline citation map literature review">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 uppercase">Timeline Mapper</span>
+                <span class="text-xs text-slate-400 font-mono">Chronology</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Litmaps</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                ২০১৫ থেকে ২০২৬ পর্যন্ত কোনো নির্দিষ্ট টপিক কিভাবে ডেভেলপ হয়েছে তার টাইমলাইন ম্যাপ তৈরি করে লিটারেচার রিভিউ লিখতে সাহায্য করে।
+              </p>
+            </div>
+            <a href="https://www.litmaps.com" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Litmaps খুলুন &rarr;
+            </a>
+          </div>
+
+          <!-- Semantic Scholar -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="semantic scholar tldr ai ai2 allen citation velocity">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30 uppercase">TL;DR Summaries</span>
+                <span class="text-xs text-slate-400 font-mono">Academic</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Semantic Scholar</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                Allen Institute-এর তৈরি সার্চ ইঞ্জিন। প্রতিটি পেপারের এক লাইনের সারমর্ম (TL;DR) দেয়, ফলে সময় নষ্ট না করে ৫০টি পেপারের মূলভাব ৫ মিনিটে বোঝা যায়।
+              </p>
+            </div>
+            <a href="https://www.semanticscholar.org" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Semantic Scholar &rarr;
+            </a>
+          </div>
+
+          <!-- Google Scholar -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="google scholar bibtex citation metric h-index">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">Primary Source</span>
+                <span class="text-xs text-slate-400 font-mono">Universal</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Google Scholar</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                সাইটেশন কাউন্ট দেখা, পেপারের রিলেটেড ভার্সন বের করা এবং এক ক্লিকে BibTeX কোড কপি করে Overleaf-এ পেস্ট করার সবচেয়ে নির্ভরযোগ্য উৎস।
+              </p>
+            </div>
+            <a href="https://scholar.google.com" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Google Scholar &rarr;
+            </a>
+          </div>
+
+          <!-- Papers with Code -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="papers with code github benchmark sota machine learning ai">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">Code & SOTA</span>
+                <span class="text-xs text-slate-400 font-mono">Open Source</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Papers With Code</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                তোমাদের থিসিস যদি AI, ML, বা ডেটাসায়েন্স ভিত্তিক হয়, তাহলে পেপারের সাথে অফিশিয়াল GitHub কোড এবং বেঞ্চমার্ক রেজাল্ট একসাথে পাওয়ার একমাত্র সেরা সাইট।
+              </p>
+            </div>
+            <a href="https://paperswithcode.com" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Papers With Code &rarr;
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="writing-tools" class="tool-section space-y-4 pt-4">
+        <h3 class="text-sm font-semibold text-amber-400 tracking-wide uppercase flex items-center gap-2">
+          <span>✍️</span> থিসিস পেপার রাইটিং, ফরম্যাটিং ও রেফারেন্সিং টুলস
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 tool-cards-grid">
+
           <!-- Overleaf -->
-          <a href="https://www.overleaf.com" target="_blank" class="p-4 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-400/50 transition">
-            <p class="font-semibold text-emerald-400">Overleaf / LaTeX</p>
-            <p class="text-xs text-slate-400 mt-1">একসাথে পেপার লেখার কোলাবোরেটিভ এডিটর</p>
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="overleaf latex writing collaboration pdf ieee springer">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase">Industry Standard</span>
+                <span class="text-xs text-slate-400 font-mono">LaTeX</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Overleaf (LaTeX)</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                IEEE বা Springer কনফারেন্স ফরম্যাটে বন্ধুদের সাথে রিয়েল-টাইমে একসাথে পেপার লেখার সেরা ক্লাউড এডিটর। কোনোকিছু ইন্সটল করার ঝামেলা নেই।
+              </p>
+            </div>
+            <a href="https://www.overleaf.com" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Overleaf খুলুন &rarr;
+            </a>
+          </div>
+
+          <!-- Zotero -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="zotero reference manager bibtex citation extension">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">Open Source</span>
+                <span class="text-xs text-slate-400 font-mono">References</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Zotero</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                ব্রাউজার এক্সটেনশন দিয়ে এক ক্লিকে যেকোনো পেপারের BibTeX ও PDF লাইব্রেরিতে সেভ করে এবং Word বা Overleaf-এ নির্ভুল সাইটেশন তৈরি করে।
+              </p>
+            </div>
+            <a href="https://www.zotero.org" target="_blank" class="mt-4 w-full text-center py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 hover:text-white transition">
+              Zotero ডাউনলোড &rarr;
+            </a>
+          </div>
+
+          <!-- Writefull & QuillBot -->
+          <div class="glass-card p-5 rounded-2xl flex flex-col justify-between transition group hover:-translate-y-1" data-tags="writefull quillbot academic paraphrasing grammar vocabulary">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-teal-500/20 text-teal-300 border border-teal-500/30 uppercase">Academic Language</span>
+                <span class="text-xs text-slate-400 font-mono">Grammar AI</span>
+              </div>
+              <h4 class="text-base font-bold text-white mt-2 group-hover:text-teal-300 transition">Writefull / QuillBot</h4>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                সাধারণ লেখার পরিবর্তে একাডেমিক পেপারের মানসম্মত ইংরেজি শব্দ ও বাক্যের গঠন সাজাতে এবং প্যারাফ্রেজ চেক করতে সাহায্য করে।
+              </p>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-2">
+              <a href="https://writefull.com" target="_blank" class="text-center py-2 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 transition">Writefull</a>
+              <a href="https://quillbot.com" target="_blank" class="text-center py-2 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs text-slate-200 transition">QuillBot</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="prompts" class="space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="p-1 rounded-lg bg-teal-500/10 text-teal-400 border border-teal-500/20">💡</span>
+            রিসার্চ পেপার পড়ার রেডিমেড AI Prompts
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">ChatGPT, Claude বা SciSpace-এ এই প্রম্পটগুলো কপি করে পেপারের টেক্সট পেস্ট করলে গভীর ইনসাইট পাওয়া যাবে।</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Prompt 1 -->
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-teal-400">1. Methodology & Dataset Deconstruction</span>
+              <button onclick="copyPrompt('p1', this)" class="text-[11px] px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition">
+                <span>📋</span> Copy Prompt
+              </button>
+            </div>
+            <p id="p1" class="font-mono text-xs text-slate-300 mt-2.5 bg-slate-950 p-3 rounded-xl border border-slate-800/80 leading-relaxed">
+Act as an expert academic reviewer in Computer Science. Analyze the attached text/paper and provide:
+1. Exact methodology used in clear step-by-step points.
+2. Dataset details (Size, splits, benchmark names).
+3. Primary baseline models compared against and the exact performance metrics achieved.
+Keep it strictly factual without conversational fluff.
+            </p>
+          </div>
+          <p class="text-[11px] text-slate-500">মেথডোলজি এবং এক্সপেরিমেন্টাল সেটআপ এক নজরে বোঝার জন্য।</p>
+        </div>
+
+        <!-- Prompt 2 -->
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-sky-400">2. Critical Limitations & Future Research Gaps</span>
+              <button onclick="copyPrompt('p2', this)" class="text-[11px] px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition">
+                <span>📋</span> Copy Prompt
+              </button>
+            </div>
+            <p id="p2" class="font-mono text-xs text-slate-300 mt-2.5 bg-slate-950 p-3 rounded-xl border border-slate-800/80 leading-relaxed">
+Critically evaluate this research work. Identify:
+1. Hidden assumptions or constraints not explicitly emphasized by the authors.
+2. Computational complexity or real-world deployment challenges.
+3. 3 potential research gaps/extensions where a new thesis project could improve upon their results.
+            </p>
+          </div>
+          <p class="text-[11px] text-slate-500">নিজেদের নতুন রিসার্চ প্রপোজাল বা নতুন মেথড বের করার আইডিয়া পেতে।</p>
+        </div>
+
+        <!-- Prompt 3 -->
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-emerald-400">3. Literature Review Synthesis (Related Works)</span>
+              <button onclick="copyPrompt('p3', this)" class="text-[11px] px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition">
+                <span>📋</span> Copy Prompt
+              </button>
+            </div>
+            <p id="p3" class="font-mono text-xs text-slate-300 mt-2.5 bg-slate-950 p-3 rounded-xl border border-slate-800/80 leading-relaxed">
+Write a concise, high-impact 2-paragraph Related Works subsection summarizing this paper for our literature review. Focus on what gap existed prior to this work, what specific novelty they introduced, and how it relates to general domain progress.
+            </p>
+          </div>
+          <p class="text-[11px] text-slate-500">থিসিসের চ্যাপ্টার-২ (Literature Review) লেখার সরাসরি উপাদান তৈরি করে।</p>
+        </div>
+
+        <!-- Prompt 4 -->
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-purple-400">4. Plain English ELI5 / Bengali Summary</span>
+              <button onclick="copyPrompt('p4', this)" class="text-[11px] px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition">
+                <span>📋</span> Copy Prompt
+              </button>
+            </div>
+            <p id="p4" class="font-mono text-xs text-slate-300 mt-2.5 bg-slate-950 p-3 rounded-xl border border-slate-800/80 leading-relaxed">
+এই পেপারটির প্রধান মূলভাব (Core Novelty) এবং সমাধানটি অত্যন্ত সহজ ভাষায় (ELI5) বাংলায় বুঝিয়ে দাও। জটিল সমীকরণগুলোর পেছনের বাস্তব লজিক কী তা একটি বাস্তব জীবনের উদাহরণের মাধ্যমে ব্যাখ্যা করো।
+            </p>
+          </div>
+          <p class="text-[11px] text-slate-500">খুব জটিল অ্যালগরিদম যখন বাংলায় সহজে বুঝে নিতে চাও।</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="team-vault" class="space-y-4">
+      <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-900 to-[#0c1220] border border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div>
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+              <span>🤝</span> তোমাদের থিসিস টিমের সরাসরি লিংক (Workspace)
+            </h2>
+            <p class="text-xs text-slate-400">তোমাদের আসল গুগল ড্রাইভ, ওভারলিফ বা রিপোজিটরির লিংকগুলো নিচে বাটনগুলোতে বসিয়ে নাও।</p>
+          </div>
+          <button onclick="editTeamLinks()" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium transition">
+            ⚙️ লিংক এডিট করুন
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+          <!-- Overleaf Project -->
+          <a id="team-overleaf" href="https://www.overleaf.com" target="_blank" class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-emerald-500/50 transition group">
+            <div class="text-xl">📄</div>
+            <h4 class="font-bold text-sm text-emerald-400 mt-2 group-hover:underline">Overleaf Project</h4>
+            <p class="text-[11px] text-slate-400 mt-1">থিসিসের মূল ড্রাফট ও LaTeX ফাইল</p>
           </a>
-          <!-- Google Drive / Folder -->
-          <a href="#" class="p-4 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-400/50 transition">
-            <p class="font-semibold text-sky-400">Shared Drive Folder</p>
-            <p class="text-xs text-slate-400 mt-1">সব পেপারের মূল PDF ফাইল রাখার জায়গা</p>
+
+          <!-- Google Drive -->
+          <a id="team-drive" href="https://drive.google.com" target="_blank" class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-sky-500/50 transition group">
+            <div class="text-xl">📁</div>
+            <h4 class="font-bold text-sm text-sky-400 mt-2 group-hover:underline">Shared Google Drive</h4>
+            <p class="text-[11px] text-slate-400 mt-1">সব পেপারের অরিজিনাল PDF ও ডেটাসেট</p>
           </a>
-          <!-- Notion or Tasks -->
-          <a href="#" class="p-4 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-400/50 transition">
-            <p class="font-semibold text-amber-400">Research Task Board</p>
-            <p class="text-xs text-slate-400 mt-1">কে কোন টপিক বা মেথড নিয়ে কাজ করবে তার ট্র্যাকার</p>
+
+          <!-- GitHub Repo -->
+          <a id="team-github" href="https://github.com/alaminshubo" target="_blank" class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-purple-500/50 transition group">
+            <div class="text-xl">🐙</div>
+            <h4 class="font-bold text-sm text-purple-400 mt-2 group-hover:underline">Project Repository</h4>
+            <p class="text-[11px] text-slate-400 mt-1">কোডবেজ ও এক্সপেরিমেন্টাল স্ক্রিপ্ট</p>
+          </a>
+
+          <!-- Notion / Task Board -->
+          <a id="team-notion" href="https://notion.so" target="_blank" class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-amber-500/50 transition group">
+            <div class="text-xl">📌</div>
+            <h4 class="font-bold text-sm text-amber-400 mt-2 group-hover:underline">Meeting & Tasks</h4>
+            <p class="text-[11px] text-slate-400 mt-1">সাপ্তাহিক মিটিং মিনিটস ও দায়িত্ব</p>
           </a>
         </div>
       </div>
@@ -155,9 +592,283 @@
 
   </main>
 
-  <footer class="text-center py-8 text-xs text-slate-500 border-t border-slate-800">
-    Thesis & Research Hub &bull; Hosted with GitHub Pages
+  <div id="paperModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-2xl p-6 shadow-2xl relative">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-base font-bold text-white">নতুন রিসার্চ পেপার যুক্ত করুন</h3>
+        <button onclick="togglePaperModal()" class="text-slate-400 hover:text-white text-lg">&times;</button>
+      </div>
+      <form id="paperForm" onsubmit="savePaper(event)" class="space-y-3.5 text-xs">
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">পেপার টাইটেল (Title)*</label>
+          <input type="text" id="pTitle" required placeholder="যেমন: Attention Is All You Need..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-teal-400">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">টপিক / ডোমেইন</label>
+            <input type="text" id="pTopic" placeholder="যেমন: NLP / Vision / Health" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-teal-400">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">বর্তমান স্ট্যাটাস</label>
+            <select id="pStatus" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-teal-400">
+              <option value="Reading">Reading (পড়ছি)</option>
+              <option value="Summarized">Summarized (সামারি শেষ)</option>
+              <option value="Cited">Cited (থিসিসে যুক্ত)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">পেপার বা ড্রাইভ লিংক (URL)</label>
+          <input type="url" id="pLink" placeholder="https://arxiv.org/abs/..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-teal-400">
+        </div>
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">কী নোট বা মূল অবদান (Key Findings)</label>
+          <textarea id="pNotes" rows="2" placeholder="এই পেপার থেকে কী শিখলাম বা কোন মেথডটা আমাদের থিসিসে কাজে লাগবে..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-teal-400"></textarea>
+        </div>
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" onclick="togglePaperModal()" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700">বাতিল</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-teal-600 text-white font-semibold hover:bg-teal-500">সেভ করুন</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="mt-16 border-t border-slate-800/80 bg-slate-950 py-8 px-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto space-y-2">
+      <p class="text-slate-400">
+        Thesis Research & Collaborative Hub &bull; Maintained by 
+        <a href="https://github.com/alaminshubo" target="_blank" class="text-teal-400 font-semibold hover:underline">
+          alaminshubo
+        </a>
+      </p>
+      <p class="text-[11px] text-slate-600">Built for high-efficiency academic workflows &bull; Hosted on GitHub Pages</p>
+    </div>
   </footer>
 
+  <script>
+    // Initial Seed Data for Team Papers
+    const defaultPapers = [
+      {
+        id: '1',
+        title: 'Deep Residual Learning for Image Recognition',
+        topic: 'Computer Vision',
+        status: 'Cited',
+        link: 'https://arxiv.org/abs/1512.03385',
+        notes: 'ResNet এর স্কিপ-কানেকশন আর্কিটেকচার আমরা বেসলাইন মডেলে ব্যবহার করব।'
+      },
+      {
+        id: '2',
+        title: 'Attention Is All You Need',
+        topic: 'NLP / Transformer',
+        status: 'Summarized',
+        link: 'https://arxiv.org/abs/1706.03762',
+        notes: 'সেলফ-অ্যাটেনশন মেকানিজম এবং এনকোডার-ডিকোডার স্ট্যাক ব্যাখ্যা করা শেষ।'
+      }
+    ];
+
+    let papers = JSON.parse(localStorage.getItem('thesis_papers')) || defaultPapers;
+    let currentFilter = 'all';
+
+    // Progress bar initialization
+    const savedProgress = localStorage.getItem('thesis_progress') || '40';
+    document.getElementById('progressRange').value = savedProgress;
+    updateProgress(savedProgress, false);
+
+    function updateProgress(val, save = true) {
+      document.getElementById('progressPercent').innerText = val + '%';
+      document.getElementById('progressBarFill').style.width = val + '%';
+      if (save) localStorage.setItem('thesis_progress', val);
+    }
+
+    // Modal Controls
+    function togglePaperModal() {
+      const modal = document.getElementById('paperModal');
+      modal.classList.toggle('hidden');
+    }
+
+    // Render Papers List
+    function renderPapers() {
+      const container = document.getElementById('paperListContainer');
+      container.innerHTML = '';
+
+      const filtered = currentFilter === 'all' 
+        ? papers 
+        : papers.filter(p => p.status === currentFilter);
+
+      // Update counters
+      document.getElementById('count-all').innerText = papers.length;
+      document.getElementById('count-reading').innerText = papers.filter(p => p.status === 'Reading').length;
+      document.getElementById('count-summarized').innerText = papers.filter(p => p.status === 'Summarized').length;
+      document.getElementById('count-cited').innerText = papers.filter(p => p.status === 'Cited').length;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-10 text-center bg-slate-900/50 rounded-2xl border border-slate-800">
+            <p class="text-xs text-slate-500">কোনো পেপার পাওয়া যায়নি। উপরে 'নতুন পেপার যুক্ত করুন' বাটনে ক্লিক করে যোগ করুন।</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(p => {
+        let badgeColor = 'bg-yellow-500/10 text-yellow-300 border-yellow-500/30';
+        if (p.status === 'Summarized') badgeColor = 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30';
+        if (p.status === 'Cited') badgeColor = 'bg-sky-500/10 text-sky-300 border-sky-500/30';
+
+        const card = document.createElement('div');
+        card.className = 'glass-card p-4 rounded-2xl flex flex-col justify-between space-y-3';
+        card.innerHTML = `
+          <div>
+            <div class="flex justify-between items-start gap-2">
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full border ${badgeColor}">
+                ${p.status}
+              </span>
+              <button onclick="deletePaper('${p.id}')" class="text-slate-500 hover:text-rose-400 text-xs p-1" title="মুছে ফেলুন">
+                ✕
+              </button>
+            </div>
+            <h4 class="text-sm font-bold text-white mt-2 leading-snug">${p.title}</h4>
+            <div class="text-[11px] text-teal-400 font-mono mt-1">${p.topic || 'General Topic'}</div>
+            <p class="text-xs text-slate-300 mt-2 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/80 leading-relaxed">
+              ${p.notes || 'কোনো নোট দেওয়া হয়নি।'}
+            </p>
+          </div>
+          <div class="pt-2 flex justify-between items-center border-t border-slate-800/80 text-xs">
+            ${p.link ? `<a href="${p.link}" target="_blank" class="text-teal-400 hover:underline flex items-center gap-1 font-medium">পেপার লিংক &rarr;</a>` : `<span class="text-slate-600">লিংক নেই</span>`}
+            <button onclick="toggleStatus('${p.id}')" class="text-[11px] px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">
+              স্ট্যাটাস পরিবর্তন
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Save New Paper
+    function savePaper(e) {
+      e.preventDefault();
+      const title = document.getElementById('pTitle').value;
+      const topic = document.getElementById('pTopic').value;
+      const status = document.getElementById('pStatus').value;
+      const link = document.getElementById('pLink').value;
+      const notes = document.getElementById('pNotes').value;
+
+      const newPaper = {
+        id: Date.now().toString(),
+        title,
+        topic,
+        status,
+        link,
+        notes
+      };
+
+      papers.unshift(newPaper);
+      localStorage.setItem('thesis_papers', JSON.stringify(papers));
+      document.getElementById('paperForm').reset();
+      togglePaperModal();
+      renderPapers();
+    }
+
+    // Toggle Paper Status Cycle
+    function toggleStatus(id) {
+      const p = papers.find(item => item.id === id);
+      if (!p) return;
+      if (p.status === 'Reading') p.status = 'Summarized';
+      else if (p.status === 'Summarized') p.status = 'Cited';
+      else p.status = 'Reading';
+
+      localStorage.setItem('thesis_papers', JSON.stringify(papers));
+      renderPapers();
+    }
+
+    // Delete Paper
+    function deletePaper(id) {
+      if (!window.confirm('আপনি কি নিশ্চিত যে এই পেপারটি তালিকা থেকে মুছে ফেলবেন?')) return;
+      papers = papers.filter(p => p.id !== id);
+      localStorage.setItem('thesis_papers', JSON.stringify(papers));
+      renderPapers();
+    }
+
+    // Filter Papers by Status
+    function filterPapers(status) {
+      currentFilter = status;
+      document.querySelectorAll('.filter-tab').forEach(tab => {
+        if (tab.getAttribute('data-status') === status) {
+          tab.classList.remove('bg-slate-800/70');
+          tab.classList.add('bg-teal-500/20', 'border', 'border-teal-500/30', 'text-white');
+        } else {
+          tab.classList.remove('bg-teal-500/20', 'border', 'border-teal-500/30', 'text-white');
+          tab.classList.add('bg-slate-800/70');
+        }
+      });
+      renderPapers();
+    }
+
+    // Live Search for Tools Directory
+    function searchTools() {
+      const query = document.getElementById('toolSearchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.tool-cards-grid > div');
+      
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const tags = card.getAttribute('data-tags') || '';
+        if (text.includes(query) || tags.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Copy Prompt to Clipboard helper
+    function copyPrompt(elemId, btn) {
+      const text = document.getElementById(elemId).innerText;
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = text;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempTextArea);
+
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span>✅</span> Copied!';
+      btn.classList.add('text-teal-400');
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('text-teal-400');
+      }, 2000);
+    }
+
+    // Custom Team Links Persistence
+    function loadTeamLinks() {
+      const savedOverleaf = localStorage.getItem('team_overleaf');
+      const savedDrive = localStorage.getItem('team_drive');
+      const savedGithub = localStorage.getItem('team_github');
+      const savedNotion = localStorage.getItem('team_notion');
+
+      if (savedOverleaf) document.getElementById('team-overleaf').href = savedOverleaf;
+      if (savedDrive) document.getElementById('team-drive').href = savedDrive;
+      if (savedGithub) document.getElementById('team-github').href = savedGithub;
+      if (savedNotion) document.getElementById('team-notion').href = savedNotion;
+    }
+
+    function editTeamLinks() {
+      const overleaf = prompt('Overleaf প্রজেক্টের লিংক দিন:', document.getElementById('team-overleaf').href);
+      if (overleaf) {
+        localStorage.setItem('team_overleaf', overleaf);
+        document.getElementById('team-overleaf').href = overleaf;
+      }
+
+      const drive = prompt('গুগল ড্রাইভ ফোল্ডারের লিংক দিন:', document.getElementById('team-drive').href);
+      if (drive) {
+        localStorage.setItem('team_drive', drive);
+        document.getElementById('team-drive').href = drive;
+      }
+    }
+
+    // Initial calls
+    renderPapers();
+    loadTeamLinks();
+  </script>
 </body>
 </html>
