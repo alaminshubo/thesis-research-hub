@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thesis Research & AI Workspace Hub</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
 
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/60 sticky top-0 backdrop-blur z-10 py-6 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <h1 class="text-2xl font-bold text-sky-400">Research & Thesis Hub</h1>
+        <p class="text-sm text-slate-400">রিসার্চ পেপার রিডিং, এআই সামারি ও কোলাবোরেশন ড্যাশবোর্ড</p>
+      </div>
+      <div class="flex gap-3 text-sm">
+        <a href="#ai-tools" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 transition">AI Tools</a>
+        <a href="#paper-search" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 transition">Paper Finding</a>
+        <a href="#shared-docs" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 transition">Workspace</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6 space-y-12">
+
+    <!-- Section 1: Paper Reading & AI Summary Tools -->
+    <section id="ai-tools">
+      <h2 class="text-xl font-semibold mb-4 text-emerald-400 flex items-center gap-2">
+        <span>⚡</span> পেপার সামারি ও AI রিডিং টুলস
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Tool 1: ChatPDF / SciSpace -->
+        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">Must Use</span>
+            <h3 class="text-lg font-bold mt-2">SciSpace (Typeset.io)</h3>
+            <p class="text-sm text-slate-300 mt-1">
+              যেকোনো PDF আপলোড করে সরাসরি পেপারকে প্রশ্ন করা, জটিল সমীকরণ বোঝা এবং কনক্লুশন এক ক্লিকে সামারি করার সেরা টুল।
+            </p>
+          </div>
+          <a href="https://typeset.io" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-sky-600 hover:bg-sky-500 font-medium text-sm transition">
+            Open SciSpace &rarr;
+          </a>
+        </div>
+
+        <!-- Tool 2: Consensus -->
+        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">Fact-Checking</span>
+            <h3 class="text-lg font-bold mt-2">Consensus</h3>
+            <p class="text-sm text-slate-300 mt-1">
+              যেকোনো রিসার্চ প্রশ্ন সার্চ করলে শত শত পাবলিশড পেপার অ্যানালাইসিস করে সাইটেশনসহ সরাসরি এআই সামারি দেয়।
+            </p>
+          </div>
+          <a href="https://consensus.app" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-sky-600 hover:bg-sky-500 font-medium text-sm transition">
+            Open Consensus &rarr;
+          </a>
+        </div>
+
+        <!-- Tool 3: ChatPDF -->
+        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800">Quick Read</span>
+            <h3 class="text-lg font-bold mt-2">ChatPDF</h3>
+            <p class="text-sm text-slate-300 mt-1">
+              দ্রুত ছোট পেপারের PDF আপলোড করে পেজ রেফারেন্সসহ পয়েন্ট আকারে সারাংশ নেওয়ার জন্য সহজ টুল।
+            </p>
+          </div>
+          <a href="https://www.chatpdf.com" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-sky-600 hover:bg-sky-500 font-medium text-sm transition">
+            Open ChatPDF &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Paper Discovery & Related Work -->
+    <section id="paper-search">
+      <h2 class="text-xl font-semibold mb-4 text-sky-400 flex items-center gap-2">
+        <span>🔍</span> পেপার খোঁজা ও রিলেটেড পেপার গ্রাফ
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-bold">Connected Papers</h3>
+            <p class="text-sm text-slate-300 mt-1">
+              একটি পেপারের নাম দিলে তার সাথে জড়িত অতীতের ও বর্তমানের সব পেপারের একটি ভিজ্যুয়াল গ্রাফ বানিয়ে দেয়।
+            </p>
+          </div>
+          <a href="https://www.connectedpapers.com" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-slate-700 hover:bg-slate-600 font-medium text-sm transition">
+            Explore Graph &rarr;
+          </a>
+        </div>
+
+        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-bold">Google Scholar</h3>
+            <p class="text-sm text-slate-300 mt-1">
+              সবচেয়ে নির্ভরযোগ্য রিসার্চ সার্চ ইঞ্জিন। সাইটেশন গোনা এবং BibTeX এক্সপোর্ট করার জন্য জরুরি।
+            </p>
+          </div>
+          <a href="https://scholar.google.com" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-slate-700 hover:bg-slate-600 font-medium text-sm transition">
+            Search Scholar &rarr;
+          </a>
+        </div>
+
+        <div class="p-5 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-bold">Semantic Scholar</h3>
+            <p class="text-sm text-slate-300 mt-1">
+              AI-পাওয়ার্ড একাডেমিক সার্চ ইঞ্জিন। পেপারের "TL;DR" বা এক লাইনের সামারি পড়ার সুবিধা আছে।
+            </p>
+          </div>
+          <a href="https://www.semanticscholar.org" target="_blank" class="mt-4 inline-block text-center py-2 px-4 rounded-lg bg-slate-700 hover:bg-slate-600 font-medium text-sm transition">
+            Open Semantic Scholar &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Team Collaboration & Paper Writing -->
+    <section id="shared-docs">
+      <h2 class="text-xl font-semibold mb-4 text-amber-400 flex items-center gap-2">
+        <span>🤝</span> গ্রুপ প্রজেক্ট ওয়ার্কস্পেস (বন্ধুদের লিংক)
+      </h2>
+      <div class="p-6 rounded-xl bg-slate-800 border border-slate-700 space-y-4">
+        <p class="text-sm text-slate-300">
+          এখানে তোমাদের থিসিস গ্রুপের গুগল ড্রাইভ, নোশন নোটবুক অথবা Overleaf (LaTeX) লিংকগুলো যুক্ত করে রাখো:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Overleaf -->
+          <a href="https://www.overleaf.com" target="_blank" class="p-4 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-400/50 transition">
+            <p class="font-semibold text-emerald-400">Overleaf / LaTeX</p>
+            <p class="text-xs text-slate-400 mt-1">একসাথে পেপার লেখার কোলাবোরেটিভ এডিটর</p>
+          </a>
+          <!-- Google Drive / Folder -->
+          <a href="#" class="p-4 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-400/50 transition">
+            <p class="font-semibold text-sky-400">Shared Drive Folder</p>
+            <p class="text-xs text-slate-400 mt-1">সব পেপারের মূল PDF ফাইল রাখার জায়গা</p>
+          </a>
+          <!-- Notion or Tasks -->
+          <a href="#" class="p-4 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-400/50 transition">
+            <p class="font-semibold text-amber-400">Research Task Board</p>
+            <p class="text-xs text-slate-400 mt-1">কে কোন টপিক বা মেথড নিয়ে কাজ করবে তার ট্র্যাকার</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-8 text-xs text-slate-500 border-t border-slate-800">
+    Thesis & Research Hub &bull; Hosted with GitHub Pages
+  </footer>
+
+</body>
+</html>
