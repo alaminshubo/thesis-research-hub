@@ -105,7 +105,6 @@ body{font-family:'Inter',sans-serif}
     <div id="promptGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
   </section>
 
-  <!-- Team Vault Section with Updated Drive Link -->
   <section id="team-vault" class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
     <div class="flex justify-between items-center gap-2">
       <div>
@@ -120,7 +119,6 @@ body{font-family:'Inter',sans-serif}
         <h4 class="font-bold text-sm text-emerald-400 mt-2">Overleaf Project</h4>
         <p class="text-[11px] text-slate-400">থিসিসের LaTeX ড্রাফট</p>
       </a>
-      <!-- Updated Drive link pointing to the thesis folder -->
       <a id="team-drive" href="https://drive.google.com/drive/folders/1ui0DuBgYKtVbPlcMKu0Bdu41yjVGs4yo" target="_blank" class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-sky-500/50">
         <div class="text-xl">📁</div>
         <h4 class="font-bold text-sm text-sky-400 mt-2">Shared Drive</h4>
@@ -201,6 +199,17 @@ const firebaseConfig = {
 const db = getFirestore(initializeApp(firebaseConfig));
 const papersCol = collection(db, "papers");
 const settingsRef = doc(db, "settings", "workspace");
+
+// টার্গেট ড্রাইভ লিংক ফিক্স
+const CORRECT_DRIVE_URL = 'https://drive.google.com/drive/folders/1ui0DuBgYKtVbPlcMKu0Bdu41yjVGs4yo';
+
+const DEFAULT_LINKS = {
+  overleaf: 'https://www.overleaf.com',
+  drive: CORRECT_DRIVE_URL,
+  github: 'https://github.com/alaminshubo',
+  notion: 'https://notion.so'
+};
+
 let papers = [], currentFilter = 'all', currentMember = 'all';
 const MEMBERS = ['Sadia', 'Al Amin', 'Piya'];
 const NEXT = { Reading: 'Summarized', Summarized: 'Cited', Cited: 'Reading' };
@@ -215,11 +224,22 @@ onSnapshot(query(papersCol, orderBy("createdAt", "desc")), snap => {
   renderPapers();
 }, err => alert('Firebase error: ' + err.message));
 
-onSnapshot(settingsRef, snap => {
+onSnapshot(settingsRef, async snap => {
   if (snap.metadata.hasPendingWrites) return;
   const d = snap.data() || {};
   if (d.progress !== undefined) { $('progressRange').value = d.progress; setProgressUI(d.progress); }
-  Object.entries(LINK_IDS).forEach(([k, id]) => { if (d.links && d.links[k]) $(id).href = d.links[k]; });
+
+  // ডেটাবেজে যদি ড্রাইভ লিংক পুরনো বা মিসিং থাকে, তবে ডেটাবেজেও নতুনটা আপডেট করে দেবে
+  if (!d.links || d.links.drive !== CORRECT_DRIVE_URL) {
+    const updatedLinks = { ...(d.links || DEFAULT_LINKS), drive: CORRECT_DRIVE_URL };
+    await setDoc(settingsRef, { links: updatedLinks }, { merge: true });
+    return;
+  }
+
+  Object.entries(LINK_IDS).forEach(([k, id]) => {
+    const targetLink = (d.links && d.links[k]) ? d.links[k] : DEFAULT_LINKS[k];
+    if ($(id))$(id).href = targetLink;
+  });
 });
 
 function setProgressUI(v) { $('progressPercent').innerText = v + '\%';$('progressBarFill').style.width = v + '%'; }
